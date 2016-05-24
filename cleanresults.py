@@ -15,11 +15,14 @@ def validateTolName(name):
 
 def validateTimeStampName(ts):
     try:
-        (year,month,day,hour,min,sec) = re.match("(\d\d\d\d)(\d\d)(\d\d)_(\d\d)(\d\d)(\d\d)",ts).groups()
+        (year, month, day, hour, minute, sec) = re.match("(\d\d\d\d)(\d\d)(\d\d)_(\d\d)(\d\d)(\d\d)", ts).groups()
     except AttributeError:
         return False
-    if (2000 < int(year) < 2050) and (1 <= int(month) <= 12) and (1 <= int(day) <= 31 ):
-        if (0 <= int(hour) <= 23) and (0 <= int(min) <= 59) and (0 <= int(sec) <= 59):
+    if (2000 < int(year) < 2050) and (1 <= int(month) <= 12) and (1 <= int(day) <= 31):
+        if (0 <= int(hour) <= 23) and (0 <= int(minute) <= 59) and (0 <= int(sec) <= 59):
             return True
-
     return False
+
+def essentialFile(name):
+    return name =="28740.69729W.csv"
+

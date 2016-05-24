@@ -32,6 +32,10 @@ class ValidateTests(unittest.TestCase):
         self.assertFalse(c.validateTimeStampName("20160101_120160"))
         self.assertTrue(c.validateTimeStampName("20160101_120159"))
 
+    def testEssentialFiles(self):
+        self.assertFalse(c.essentialFile("spam"))
+        self.assertTrue(c.essentialFile("28740.69729W.csv"))
+
 
 if __name__ == '__main__':
     unittest.main()
