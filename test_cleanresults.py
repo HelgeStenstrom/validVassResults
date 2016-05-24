@@ -56,8 +56,19 @@ class NamePartsTests(unittest.TestCase):
         name = "28740.69729Alarmw.txt"
         result = c.NameParts(name)
         self.assertEqual(result.tc, "28740")
+        self.assertEqual(result.OneLetter, "")
         self.assertEqual(result.tcs, "69729")
         self.assertEqual(result.ShortName, "Alarmw")
+        self.assertEqual(result.suffix, "txt")
+
+
+    def testNameParts2(self):
+        name = "30431.74123_1Log.txt"
+        result = c.NameParts(name)
+        self.assertEqual(result.tc, "30431")
+        self.assertEqual(result.OneLetter, "")
+        self.assertEqual(result.tcs, "74123")
+        self.assertEqual(result.ShortName, "_1Log")
         self.assertEqual(result.suffix, "txt")
 
 
