@@ -36,6 +36,30 @@ class ValidateTests(unittest.TestCase):
         self.assertFalse(c.essentialFile("spam"))
         self.assertTrue(c.essentialFile("28740.69729W.csv"))
 
+    def testIsTCNum(self):
+        self.assertTrue(c.isTestCaseId("28740"))
+        self.assertTrue(c.isTestCaseId("28741"))
+        self.assertFalse(c.isTestCaseId(""))
+
+
+    def testIsTCSNum(self):
+        self.assertTrue(c.isTestCaseSetId("69729"))
+        self.assertFalse(c.isTestCaseSetId(""))
+
+    def testIsWFile(self):
+        self.assertTrue(c.isWFile("28740.69729W.csv"))
+        self.assertFalse(c.isWFile(""))
+
+
+class NamePartsTests(unittest.TestCase):
+    def testNameParts(self):
+        name = "28740.69729Alarmw.txt"
+        result = c.NameParts(name)
+        self.assertEqual(result.tc, "28740")
+        self.assertEqual(result.tcs, "69729")
+        self.assertEqual(result.ShortName, "Alarmw")
+        self.assertEqual(result.suffix, "txt")
+
 
 if __name__ == '__main__':
     unittest.main()

@@ -23,6 +23,37 @@ def validateTimeStampName(ts):
             return True
     return False
 
+
 def essentialFile(name):
     return name =="28740.69729W.csv"
+
+
+def isTestCaseId(id):
+    try:
+        tc = int(id)
+    except ValueError:
+        return False
+    return 10000 < tc < 99999
+
+
+def isTestCaseSetId(id):
+    try:
+        tcs = int(id)
+    except ValueError:
+        return False
+    return 10000 < tcs < 99999
+
+
+def isWFile(name):
+    return name == "28740.69729W.csv"
+
+class NameParts:
+    def __init__(self,name):
+        pattern = re.compile("(\d*)(.*)\.(\d*)(.*)\.(.*)")
+        p1, p2, p3, p4, p5 = pattern.search(name).groups()
+        self.tc = p1
+        self.tcs = p3
+        self.OneLetter = p2
+        self.ShortName = p4
+        self.suffix = p5
 
