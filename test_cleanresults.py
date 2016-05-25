@@ -68,7 +68,7 @@ class NamePartsTests(unittest.TestCase):
         self.assertEqual(result.tc, "30431")
         self.assertEqual(result.OneLetter, "")
         self.assertEqual(result.tcs, "74123")
-        self.assertEqual(result.ShortName, "_1Log")
+        self.assertEqual(result.ShortName, "Log")
         self.assertEqual(result.suffix, "txt")
 
 
