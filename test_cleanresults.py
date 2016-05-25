@@ -55,21 +55,22 @@ class NamePartsTests(unittest.TestCase):
     def testNameParts(self):
         name = "28740.69729Alarmw.txt"
         result = c.NameParts(name)
-        self.assertEqual(result.tc, "28740")
-        self.assertEqual(result.OneLetter, "")
-        self.assertEqual(result.tcs, "69729")
-        self.assertEqual(result.ShortName, "Alarmw")
-        self.assertEqual(result.suffix, "txt")
+        self.assertEqual("28740", result.tc)
+        self.assertEqual("", result.OneLetter)
+        self.assertEqual("69729", result.tcs)
+        self.assertEqual("Alarmw", result.ShortName)
+        self.assertEqual("txt", result.suffix)
 
 
     def testNameParts2(self):
         name = "30431.74123_1Log.txt"
         result = c.NameParts(name)
-        self.assertEqual(result.tc, "30431")
-        self.assertEqual(result.OneLetter, "")
-        self.assertEqual(result.tcs, "74123")
-        self.assertEqual(result.ShortName, "Log")
-        self.assertEqual(result.suffix, "txt")
+        self.assertEqual("30431", result.tc )
+        self.assertEqual("", result.OneLetter)
+        self.assertEqual("74123", result.tcs)
+        self.assertEqual("1", result.loopnum)
+        self.assertEqual("Log", result.ShortName)
+        self.assertEqual("txt", result.suffix )
 
 
 if __name__ == '__main__':

@@ -49,11 +49,13 @@ def isWFile(name):
 
 class NameParts:
     def __init__(self,name):
-        pattern = re.compile("(\d*)(.*)\.(\d*)(.*)\.(.*)")
-        p1, p2, p3, p4, p5 = pattern.search(name).groups()
+        pattern = re.compile("(\d*)(.*)\.(\d*)\_*(\d*)(.*)\.(.*)")
+        p1, p2, p3, p4, p5, p6 = pattern.search(name).groups()
         self.tc = p1
-        self.tcs = p3
         self.OneLetter = p2
-        self.ShortName = p4
-        self.suffix = p5
+        self.tcs = p3
+        self.loopnum = p4
+        self.ShortName = p5
+        self.suffix = p6
+
 
