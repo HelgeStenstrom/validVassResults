@@ -80,5 +80,11 @@ class HasInterestingFilesTests(unittest.TestCase):
         self.assertTrue(c.isInteresting("30431.74123W.csv"))
         self.assertFalse(c.isInteresting("boring"))
 
+    def testIsBoring(self):
+        # Jag behöver kanske bygga ut testet när jag ser att andra filer är intressanta.
+        self.assertFalse(c.isBoring(["30431.74123W.csv"]))
+        self.assertTrue(c.isBoring([]))
+
+
 if __name__ == '__main__':
     unittest.main()

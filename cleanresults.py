@@ -55,6 +55,13 @@ def isInteresting(name):
     verdicts = [test(name) for test in tests]
     return True in verdicts
 
+def isBoring(filelist):
+    verdict = [isInteresting(f) for f in filelist]
+    return not True in verdict
+
+def isBoringDir(d):
+    raise NotImplementedError
+
 def onePredicateFilled(nameList, predicate):
     verdicts = [predicate(n) for n in nameList]
     return True in verdicts
