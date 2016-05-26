@@ -46,9 +46,18 @@ def isTestCaseSetId(id):
 
 def isWFile(name):
     try:
-        return NameParts(name).ShortName == "W"
+        return NameParts(name).ShortName == "W" and NameParts(name).suffix == "csv"
     except ValueError:
         return False
+
+def isInteresting(name):
+    tests = [isWFile]
+    verdicts = [test(name) for test in tests]
+    return True in verdicts
+
+def onePredicateFilled(nameList, predicate):
+    verdicts = [predicate(n) for n in nameList]
+    return True in verdicts
 
 class NameParts:
     def __init__(self,name):

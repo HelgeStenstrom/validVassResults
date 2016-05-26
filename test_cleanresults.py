@@ -2,13 +2,9 @@
 # -*- coding:utf-8 -*-
 
 import cleanresults as c
-
-
 import unittest
 
 # =====  Unit tests start here ==========
-
-
 
 class ValidateTests(unittest.TestCase):
     def testTolDirName(self):
@@ -67,6 +63,22 @@ class NamePartsTests(unittest.TestCase):
         self.assertEqual("Log", result.ShortName)
         self.assertEqual("txt", result.suffix )
 
+class HasInterestingFilesTests(unittest.TestCase):
+    def pred(self, x):
+        return x==True
+
+    def testPredicateItself(self):
+        self.assertTrue(self.pred(True))
+        self.assertFalse(self.pred(False))
+
+    def testOnePredicateFilled(self):
+        self.assertFalse(c.onePredicateFilled([False], self.pred))
+        self.assertTrue(c.onePredicateFilled([True], self.pred))
+        self.assertTrue(c.onePredicateFilled([False, False, False, True, False], self.pred))
+
+    def testIsInteresting(self):
+        self.assertTrue(c.isInteresting("30431.74123W.csv"))
+        self.assertFalse(c.isInteresting("boring"))
 
 if __name__ == '__main__':
     unittest.main()
