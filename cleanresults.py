@@ -45,17 +45,23 @@ def isTestCaseSetId(id):
 
 
 def isWFile(name):
-    return name == "28740.69729W.csv"
+    try:
+        return NameParts(name).ShortName == "W"
+    except ValueError:
+        return False
 
 class NameParts:
     def __init__(self,name):
         pattern = re.compile("(\d*)(.*)\.(\d*)\_*(\d*)(.*)\.(.*)")
-        p1, p2, p3, p4, p5, p6 = pattern.search(name).groups()
-        self.tc = p1
-        self.OneLetter = p2
-        self.tcs = p3
-        self.loopnum = p4
-        self.ShortName = p5
-        self.suffix = p6
+        try:
+            p1, p2, p3, p4, p5, p6 = pattern.search(name).groups()
+            self.tc = p1
+            self.OneLetter = p2
+            self.tcs = p3
+            self.loopnum = p4
+            self.ShortName = p5
+            self.suffix = p6
+        except AttributeError:
+            raise ValueError
 
 

@@ -9,16 +9,6 @@ import unittest
 # =====  Unit tests start here ==========
 
 
-class SomeTests(unittest.TestCase):
-
-    def testPass(self):
-        """Always pass"""
-        pass
-
-    def testSomething(self):
-        """Run a function"""
-        c.foo()
-        self.assertEquals(1, 1)
 
 class ValidateTests(unittest.TestCase):
     def testTolDirName(self):
@@ -40,14 +30,19 @@ class ValidateTests(unittest.TestCase):
         self.assertTrue(c.isTestCaseId("28740"))
         self.assertTrue(c.isTestCaseId("28741"))
         self.assertFalse(c.isTestCaseId(""))
+        self.assertFalse(c.isTestCaseId("abc"))
 
 
     def testIsTCSNum(self):
         self.assertTrue(c.isTestCaseSetId("69729"))
+        self.assertTrue(c.isTestCaseSetId("12345"))
         self.assertFalse(c.isTestCaseSetId(""))
+        self.assertFalse(c.isTestCaseSetId("abc"))
 
     def testIsWFile(self):
         self.assertTrue(c.isWFile("28740.69729W.csv"))
+        self.assertTrue(c.isWFile("1.1W.csv"))
+        self.assertFalse(c.isWFile("28740.69729L.csv"))
         self.assertFalse(c.isWFile(""))
 
 
